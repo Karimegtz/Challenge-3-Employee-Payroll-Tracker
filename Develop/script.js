@@ -18,33 +18,27 @@ const collectEmployees = function() {
   let lastName= prompt('Introduce the employee last name');
   let salary= parseFloat( prompt('Introduce employee salary'));
 
-  if(isNaN(salary)){  // Asegura que el salario sea 0 si no es un número válido, isNaN que significa "is Not a Number"
-    salary=0;
-  }
-  employees.push({firstName,lastName,salary});
-  addMore= confirm ('Do you want to add another employee?');
-  }
 
   return employees;
+  //que pasa si no es numero
 
 
 }
 // TODO: Calculate and display the average salary
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
-let totalSalary=employeesArray.reduce((total,employee)=> {  //  Calcula el promedio numérico.
-  return total + parseFloat(employee.salary); //convierte el string employee.salary a un número de punto flotante.
-}, 0);
-let averageSalary= totalSalary / employeesArray.length;
-console.log(`The average employee salary between our ${employeesArray.length} employees is: $${averageSalary.toFixed(2)}`); // muestra el promedio como un número con dos decimales.
-
-
+  let totalSalary=employeesArray.reduce((total,employee)=> {  //  Calcula el promedio numérico.
+    return total + parseFloat(employee.salary); //convierte el string employee.salary a un número de punto flotante.
+  }, 0);
+  let averageSalary= totalSalary / employeesArray.length;
+  console.log(`The average employee salary between our ${employeesArray.length} employees is: $${averageSalary.toFixed(2)}`); // muestra el promedio como un número con dos decimales.
+  
 }
 
 // Select a random employee
  // TODO: Select and display a random employee
 const getRandomEmployee = function(employeesArray) {
- let randomIndex= Math.floor(Math.random () * employeesArray.length);
+  let randomIndex= Math.floor(Math.random () * employeesArray.length);
  let randomEmployee= employeesArray[randomIndex];
  
 console.log(`Congratulations to ${randomEmployee.firstName}  ${randomEmployee.lastName}, our random drawing winner!` );
