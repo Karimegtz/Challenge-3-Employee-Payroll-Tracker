@@ -1,20 +1,59 @@
 // Get a reference to the #add-employees-btn element
+
+
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
-
+//___________________________________________________________________________
 // Collect employee data
+// TODO: Get user input to create and return an array of employee objects
+//Recolección de datos de empleado
 const collectEmployees = function() {
-  // TODO: Get user input to create and return an array of employee objects
-}
+  
+  let employees=[];
+  let addMore= true;
+  console.log("Collected Employees:", employees);  // Muestra todos los empleados recogidos
 
+  
+  while (addMore){
+  let firstName= prompt('Introduce the employee fisrt name');
+  let lastName= prompt('Introduce the employee last name');
+  let salary= parseFloat( prompt('Introduce employee salary'));
+
+  if(isNaN(salary)){  // Asegura que el salario sea 0 si no es un número válido, isNaN que significa "is Not a Number"
+    salary=0;
+  }
+  employees.push({firstName,lastName,salary});
+  addMore= confirm ('Do you want to add another employee?');
+  }
+
+  return employees;
+
+
+}
+// TODO: Calculate and display the average salary
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
+let totalSalary=employeesArray.reduce((total,employee)=> {  //  Calcula el promedio numérico.
+  return total + parseFloat(employee.salary); //convierte el string employee.salary a un número de punto flotante.
+}, 0);
+let averageSalary= totalSalary / employeesArray.length;
+console.log(`The average employee salary between our ${employeesArray.length} employees is: $${averageSalary.toFixed(2)}`); // muestra el promedio como un número con dos decimales.
+
+
 }
 
 // Select a random employee
+ // TODO: Select and display a random employee
 const getRandomEmployee = function(employeesArray) {
-  // TODO: Select and display a random employee
+ let randomIndex= Math.floor(Math.random () * employeesArray.length);
+ let randomEmployee= employeesArray[randomIndex];
+ 
+console.log(`Congratulations to ${randomEmployee.firstName}  ${randomEmployee.lastName}, our random drawing winner!` );
+
 }
+
+
+
+
 
 /*
   ====================
